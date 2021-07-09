@@ -283,10 +283,10 @@ arg = ['quux', 'corge', 'grault']
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import sys
 &gt;&gt;&gt; sys.path
-['', '/home/kefeng/anaconda3/lib/python36.zip', 
-'/home/kefeng/anaconda3/lib/python3.6', 
-'/home/kefeng/anaconda3/lib/python3.6/lib-dynload', 
-'/home/kefeng/anaconda3/lib/python3.6/site-packages']
+['', '/home/Shravan/anaconda3/lib/python36.zip', 
+'/home/Shravan/anaconda3/lib/python3.6', 
+'/home/Shravan/anaconda3/lib/python3.6/lib-dynload', 
+'/home/Shravan/anaconda3/lib/python3.6/site-packages']
 </code></pre></div></div>
 
 <h3 id="22-how-to-ensure-you-module-is-found">2.2. How to ensure you module is found?</h3>
@@ -304,13 +304,13 @@ arg = ['quux', 'corge', 'grault']
 
 <p>There is actually one additional option: you can put the module file in any directory of your choice and then modify sys.path at run-time so that it contains that directory. For example, in this case, you could put mod.py in directory <code class="language-plaintext highlighter-rouge">~/KFTorch</code> and then issue the following statements:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; sys.path.append('/home/kefeng/KFTorch')
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; sys.path.append('/home/Shravan/KFTorch')
 &gt;&gt;&gt; sys.path
-['', '/home/kefeng/anaconda3/lib/python36.zip', 
-'/home/kefeng/anaconda3/lib/python3.6', 
-'/home/kefeng/anaconda3/lib/python3.6/lib-dynload', 
-'/home/kefeng/anaconda3/lib/python3.6/site-packages', 
-'/home/kefeng/KFTorch']
+['', '/home/Shravan/anaconda3/lib/python36.zip', 
+'/home/Shravan/anaconda3/lib/python3.6', 
+'/home/Shravan/anaconda3/lib/python3.6/lib-dynload', 
+'/home/Shravan/anaconda3/lib/python3.6/site-packages', 
+'/home/Shravan/KFTorch']
 &gt;&gt;&gt; import mod
 </code></pre></div></div>
 
@@ -319,10 +319,10 @@ arg = ['quux', 'corge', 'grault']
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import mod
 &gt;&gt;&gt; mod.__file__
-'/home/kefeng/KFTorch/mod.py'
+'/home/Shravan/KFTorch/mod.py'
 &gt;&gt;&gt; import re
 &gt;&gt;&gt; re.__file__
-'/home/kefeng/anaconda3/lib/python3.6/re.py'
+'/home/Shravan/anaconda3/lib/python3.6/re.py'
 </code></pre></div></div>
 
 <p>The directory portion of <code class="language-plaintext highlighter-rouge">__file__</code> should be one of the directories in <code class="language-plaintext highlighter-rouge">sys.path</code>.</p>
@@ -346,7 +346,7 @@ arg = ['quux', 'corge', 'grault']
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import mod
 &gt;&gt;&gt; mod
-&lt;module 'mod' from '/home/kefeng/KFTorch/mod.py'&gt;
+&lt;module 'mod' from '/home/Shravan/KFTorch/mod.py'&gt;
 </code></pre></div></div>
 
 <p>But <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">foo</code> remain in the module’s <strong>private symbol table</strong> and are not meaningful in the local context:</p>
@@ -508,7 +508,7 @@ Object not found in module
 <p>This can be useful for identifying what exactly has been added to the namespace by an import statement:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import sys
-&gt;&gt;&gt; sys.path.append('/home/kefeng/KFTorch')
+&gt;&gt;&gt; sys.path.append('/home/Shravan/KFTorch')
 &gt;&gt;&gt; dir()
 ['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'sys']
 &gt;&gt;&gt; import mod
@@ -593,7 +593,7 @@ arg = quux
 
 <p>Now, when run the script, we can get output:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kefeng@server:~/KFTorch$ python mod.py 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shravan@server:~/KFTorch$ python mod.py 
 Executing as standalone script
 If Comrade Napoleon says it, it must be right.
 [100, 200, 300]
@@ -631,7 +631,7 @@ arg = quux
 
 <p>When it’s run as a standalone script by passing an integer argument on the command-line for testing:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kefeng@server:~/KFTorch$ python factorial.py 5
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shravan@server:~/KFTorch$ python factorial.py 5
 120
 </code></pre></div></div>
 
@@ -669,7 +669,7 @@ a = [100, 200, 300]
 &gt;&gt;&gt; import importlib
 &gt;&gt;&gt; importlib.reload(mod)
 a = [100, 200, 300]
-&lt;module 'mod' from '/home/kefeng/KFTorch/mod.py'&gt;
+&lt;module 'mod' from '/home/Shravan/KFTorch/mod.py'&gt;
 </code></pre></div></div>
 
 <h2 id="7-python-pachages">7. Python Pachages</h2>
@@ -790,7 +790,7 @@ AttributeError: module 'pkg' has no attribute 'mod2'
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import importlib
 &gt;&gt;&gt; importlib.reload(KFTorch)
 Invoking __init__.py for KFTorch
-&lt;module 'KFTorch' from '/home/kefeng/KFTorch/__init__.py'&gt;
+&lt;module 'KFTorch' from '/home/Shravan/KFTorch/__init__.py'&gt;
 &gt;&gt;&gt; KFTorch.A
 ['aaa', 'bbb', 'ccc']
 </code></pre></div></div>
@@ -1146,7 +1146,7 @@ function topFunction() {
       </div>
       <div class="footer-copyright">
         <div class="container">
-          &#xA9; 2020 Everest. All rights reserved. Powered by <a href="https://github.com/shravanskotian0811">Kefeng</a>.
+          &#xA9; Shravan. All rights reserved. Powered by <a href="https://github.com/shravanskotian0811">Shravan</a>.
         </div>
       </div>
     </footer>
