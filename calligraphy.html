@@ -33,7 +33,7 @@
 <script type="application/ld+json">
 {"url":"http://localhost:4000/calligraphy","headline":"書法","description":"Theme based on Materialize.css for jekyll sites.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-
+  
   </head>
   <body>
     <header>
@@ -74,7 +74,20 @@
   <p>Welcome</p>
 
 </div>
+<head>
+  <style>
+      #footer {
+          position: fixed;
+          padding: 10px 10px 0px 10px;
+          bottom: 0;
+          width: 100%;
+          /* Height of the footer*/ 
+          height: 40px;
+          background: grey;
+      }
+  </style>
 
+</head>
 <!-- KF 03/01/2019  -->
 <!-- Modify back to top button -->
 <button onclick="topFunction()" id="myBtn-calligraphy" title="Home"><i class="material-icons">vertical_align_top</i></button>
@@ -98,7 +111,8 @@ function topFunction() {
 }
 </script>
     </main>
-    <footer class="page-footer calligraphy-grey">
+    <!--
+    <footer class="page-footer calligraphy-grey"></footer>
       <div class="container">
         <div class="row">
           <div class="col s12">
@@ -114,7 +128,10 @@ function topFunction() {
         </div>
       </div>
     </footer>
-
+    -->
+    <div id="container">
+      <div id="footer"></div>
+    </div>
     <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     
