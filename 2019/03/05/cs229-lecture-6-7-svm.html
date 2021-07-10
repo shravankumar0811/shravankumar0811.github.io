@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!-- Add jQuery - KFZ on Wed Sep  9 14:42:25 CST 2020
+    -->
+    <script src="/assets/js/jquery-3.5.1.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      [CS229] Lecture 6 Notes - Support Vector Machines I
+      
+      2020
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+	<!--
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+	-->
+    <link rel="stylesheet" href="/assets/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/Material+Icons.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/post.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="[CS229] Lecture 6 Notes - Support Vector Machines I" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduce Support Vector Machines (SVM) Created on 02/27/2019 Updated on 03/04/2019 Updated on 03/05/2019" />
+<meta property="og:description" content="Introduce Support Vector Machines (SVM) Created on 02/27/2019 Updated on 03/04/2019 Updated on 03/05/2019" />
+<link rel="canonical" href="http://localhost:4000/2019/03/05/cs229-lecture-6-7-svm" />
+<meta property="og:url" content="http://localhost:4000/2019/03/05/cs229-lecture-6-7-svm" />
+<meta property="og:site_name" content="Everest" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-05T00:00:00+08:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2019/03/05/cs229-lecture-6-7-svm","headline":"[CS229] Lecture 6 Notes - Support Vector Machines I","dateModified":"2019-03-05T00:00:00+08:00","datePublished":"2019-03-05T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/03/05/cs229-lecture-6-7-svm"},"description":"Introduce Support Vector Machines (SVM) Created on 02/27/2019 Updated on 03/04/2019 Updated on 03/05/2019","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+	  <!--
+      <nav class="top-nav teal">
+	  -->
+      <nav class="top-nav ohio-state-scarlet">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">Everest<sup>2020</sup></a>
+            <img class="buckeye_leaf" src="/assets/res/buckeye_leaf.png" alt="buckeye_leaf">
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+            <a href="https://github.com/zkf85" target="_blank"><img class="circle z-depth-2" src="/assets/res/lion_king.jpg"></a>
+            <span class="white-text name">Zhu, Kefeng</span>
+			<!--
+            <span class="white-text email">zkf1985@gmail.com</span>
+			-->
+            <span class="white-text email"><i>A Programmer, An AI Practitioner</i></span>
+          </div>
+        </li>
+
+        <li class="subheader">BLOG</li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>Categories</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>Tags</a></li>
+<!--
+<li><a class="waves-effect" href="/feed.xml" target="_blank"><i class="material-icons">rss_feed</i>RSS</a></li>
+-->        
+        <li class="subheader">COLLECTIONS</li>
+        <li><a class="waves-effect" href="/cs229"><i class="material-icons">widgets</i>CS229</a></li>
+        <li><a class="waves-effect" href="/mit6006"><i class="material-icons">storage</i>MIT6006</a></li>
+        <li><a class="waves-effect" href="/leetcode"><i class="material-icons">code</i>LeetCode</a></li>
+
+        <li class="subheader">OTHERS</li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>About Me</a></li>
+        <li><a class="waves-effect" href="/calligraphy"><i class="material-icons">dashboard</i>書</a></li>
+        <!-- <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li> -->
+      </ul>
+    </header>
+    <main>
+
+<!--
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+-->
+<!-- KF 02/14/2019
+The following snippet is to allow single $ style inline mode.
+Remember that after enabling this, you have to enter the real dollar sings with `\$`
+-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<div class="container">
+  <div id="post-info">
+  <h1>[CS229] Lecture 6 Notes - Support Vector Machines I</h1>
+  <ul class="collapsible hoverable" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
+           
+          Mar.
+            
+          05, 2019 - Tuesday
+          <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
+        </span>
+      </div>
+      <div class="collapsible-body">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Categories">sort</i>
+          
+          
+          
+          <a href="/categories#notes_cap" target="_blank"><div class="chip">Notes</div></a>
+          
+        </span>
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Tags">label</i>
+          
+          
+          
+          <a href="/tags#cs229" target="_blank"><div class="chip">cs229</div></a>
+          
+          
+          
+          <a href="/tags#machine-learning" target="_blank"><div class="chip">machine learning</div></a>
+          
+          
+          
+          <a href="/tags#svm" target="_blank"><div class="chip">svm</div></a>
+          
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col s12">
+    <blockquote>
+  <ul>
+    <li>Introduce Support Vector Machines (SVM)</li>
+    <li>Created on 02/27/2019</li>
+    <li>Updated on 03/04/2019</li>
+    <li>Updated on 03/05/2019</li>
+  </ul>
+</blockquote>
+
+<!--more-->
+
+<ul id="markdown-toc">
+  <li><a href="#1-margins-intuition" id="markdown-toc-1-margins-intuition">1. Margins: Intuition</a></li>
+  <li><a href="#2-change-of-notation-from-logistic-regression" id="markdown-toc-2-change-of-notation-from-logistic-regression">2. Change of Notation (from logistic regression)</a></li>
+  <li><a href="#3-function-margins--geometric-margins" id="markdown-toc-3-function-margins--geometric-margins">3. Function Margins / Geometric Margins</a>    <ul>
+      <li><a href="#31-function-margins" id="markdown-toc-31-function-margins">3.1. Function Margins</a></li>
+      <li><a href="#32-geometric-margins" id="markdown-toc-32-geometric-margins">3.2. Geometric Margins</a>        <ul>
+          <li><a href="#derivation-of-geometric-margins" id="markdown-toc-derivation-of-geometric-margins">Derivation of geometric margins:</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#4-the-optimal-margin-classifier" id="markdown-toc-4-the-optimal-margin-classifier">4. The Optimal Margin Classifier</a>    <ul>
+      <li><a href="#41-intuition" id="markdown-toc-41-intuition">4.1. Intuition</a></li>
+      <li><a href="#42-describe-the-aim-in-math" id="markdown-toc-42-describe-the-aim-in-math">4.2. Describe the aim in math:</a></li>
+    </ul>
+  </li>
+  <li><a href="#5-lagrange-duality" id="markdown-toc-5-lagrange-duality">5. Lagrange Duality</a></li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<p>Support Vector Machine (SVM) learning algorithms are among the best “off-the-shelf” supervised learning algorithm.</p>
+
+<h2 id="1-margins-intuition">1. Margins: Intuition</h2>
+
+<p><em>(03/04/2019)</em></p>
+
+<p>The intuition is to find a decision boundary that allows us to make all correct and confident  (meaning far from the decision boundary) predictions on the training examples.</p>
+
+<h2 id="2-change-of-notation-from-logistic-regression">2. Change of Notation (from logistic regression)</h2>
+<ol>
+  <li>In SVM discussion, we use $y \in \{-1, 1\}$ instead of $\{0, 1\}$ to denote the class labels.</li>
+  <li>Rather than parameterizing linear classifier with $\theta$, we use $w, b$ as parameters, and our classifier is written as:</li>
+</ol>
+
+<p><script type="math/tex">h_{w,b}(x) = g(w^T x + b).</script></p>
+<h2 id="3-function-margins--geometric-margins">3. Function Margins / Geometric Margins</h2>
+<h3 id="31-function-margins">3.1. Function Margins</h3>
+<p>Definition of the <strong>functional margin</strong> of $w,b$ w.r.t. the training example:
+<script type="math/tex">\hat \gamma^{(i)} = y^{(i)}(w^Tx+b).</script></p>
+<ul>
+  <li>where $y^{(i)} \in \{-1, 1\}$;</li>
+  <li>if $y^{(i)}(w^Tx+b) &gt; 0$, then our prediction on this example is <strong>correct</strong>!</li>
+</ul>
+
+<p>Given a training set $S = \{(x^{(i)}, y^{(i)}); i = 1, \ldots, m\}$, we also define the function margin of $(w,b)$ w.r.t. $S$ as the <strong>smallest</strong> of the functional margins of the individual training examples. Denoted by $\hat{\gamma}$:</p>
+
+<script type="math/tex; mode=display">\hat \gamma = \min_{i=1, \ldots, m} \hat \gamma^{(i)}.</script>
+
+<h3 id="32-geometric-margins">3.2. Geometric Margins</h3>
+<p><em>(03/04/2019)</em></p>
+
+<p>Consider the figure below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><img src="/public/img/20190305-geometric-margins.png" alt="" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Figure 1.</strong> Geometric Margin.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The distance from a training sample $x^{(i)}$ to the decision boundary ($w^Tx+b=0$) is denoted as $\gamma^{(i)}$, it’s value is given by the line “AB” in <strong>Figure 1</strong>.</p>
+
+<h4 id="derivation-of-geometric-margins">Derivation of geometric margins:</h4>
+<ul>
+  <li>Point “B” is given by $x^{(i)} - \gamma^{(i)} \cdot w / \Vert w \Vert$.</li>
+  <li>Point “B” is on the decision boundary $w^Tx+b=0$. Hence,</li>
+</ul>
+
+<script type="math/tex; mode=display">w^T\left(x^{(i)} - \gamma^{(i)} \cdot \frac{w}{\Vert w \Vert}\right)+b=0</script>
+
+<ul>
+  <li>Solving for $\gamma^{(i)}$, we have:</li>
+</ul>
+
+<script type="math/tex; mode=display">\gamma{(i)} = \frac{w^Tx^{(i)} + b}{\Vert w \Vert} = \left(\frac{w}{\Vert w\Vert}\right)^T x^{(i)} + \frac{b}{\Vert w\Vert}.</script>
+
+<ul>
+  <li>In order to let both “positive” and “negative” samples satisfy, we define the <strong>geometric margin</strong> of $(w,b)$ w.r.t. a training sample $(x^{(i)},y^{(i)})$ to be:</li>
+</ul>
+
+<script type="math/tex; mode=display">\gamma^{(i)} = y^{(i)}\left(\left(\frac{w}{\Vert w\Vert}\right)^T x^{(i)} + \frac{b}{\Vert w\Vert}\right).</script>
+
+<ul>
+  <li>Finally, given a training set $S = \{(x^{(i)}, y^{(i)}); i = 1, \ldots, m\}$, we also define the function margin of $(w,b)$ w.r.t. $S$ as the <strong>smallest</strong> of the geometric margins of the individual training examples:</li>
+</ul>
+
+<script type="math/tex; mode=display">\gamma = \min_{i=1,\ldots,m}\gamma^{(i)}</script>
+
+<h2 id="4-the-optimal-margin-classifier">4. The Optimal Margin Classifier</h2>
+<h3 id="41-intuition">4.1. Intuition</h3>
+<p>Now, our aim is to try to <strong>find a decision boundary that maximizes the (geometric margin)</strong>, since this would reflect <strong>a very confident set of predictions on the training set</strong> and <strong>a good “fit” to the training data</strong>.</p>
+
+<p>Specifically, this will result in a classifier that separates the positive and the negative training examples with a “gap” (the geometric margin).</p>
+
+<h3 id="42-describe-the-aim-in-math">4.2. Describe the aim in math:</h3>
+<ul>
+  <li>Assume that we are given a training set that is linearly separable. Then, our aim is to find the hyperplane $(w,b)$ to maximize the geometric margin. The optimization problem can be written as:</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\max_{\gamma,w,b} &\quad \gamma \\
+\mbox{s.t.} &\quad y^{(i)}\left(w^T x^{(i)} + b\right) \ge \gamma,\quad i=1,\ldots,m \\
+&\quad \Vert w\Vert = 1.
+\end{align} %]]></script>
+
+<ul>
+  <li>If we could solve the optimization problem, we’d be done. However, “$\Vert w\Vert=1$” constraint is nasty(non-convex), so we try to transform the problem into a nicer one:</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\max_{\hat\gamma,w,b} &\quad \frac{\hat\gamma}{\Vert w\Vert} \\
+\mbox{s.t.} &\quad y^{(i)}\left(w^T x^{(i)} + b\right) \ge \hat\gamma,\quad i=1,\ldots,m \\
+&\quad \Vert w\Vert = 1.
+\end{align} %]]></script>
+
+<ul>
+  <li>
+    <p>This time, we’re goint to maximize $\hat\gamma/\Vert w\Vert$, subject to the functional margins all being at least $\hat\gamma$. However, this objective function $\hat\gamma/\Vert w\Vert$ is still nasty (non-convex). Therefore, we have to continue to find a better way.</p>
+  </li>
+  <li>
+    <p>The <strong>key idea</strong> we use here: we can add arbitrary scaling constraint on $w$ and $b$ without changing anything. Here, we introduce the scaling constraint that <strong>the functional margin of $w,b$ w.r.t. the training set must be 1</strong>:</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\hat\gamma = 1.</script>
+
+<ul>
+  <li>Plugging this into our problem above and noting that maximizing $\hat\gamma/\Vert w\Vert=1/\Vert w\Vert$ is the same thing as minimizing $\Vert w\Vert^2$, we now have the following optimization problem:</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\min_{w,b} &\quad \frac{1}{2}\Vert w\Vert^2 \tag{a}\label{eqa} \\
+\mbox{s.t.} &\quad y^{(i)}\left(w^Tx^{(i)} + b\right) \ge 1, \quad i=1,\ldots, m \tag{b}\label{eqb}
+\end{align} %]]></script>
+
+<p>Now, the above is an optimization problem witha convex quadratic objective and only linear constraints. It’s colution gives us the <strong>optimal margin classifier</strong>.</p>
+
+<p>In the following, the aim is to find a good way to solve this <strong>“constrained optimization problem”</strong>.</p>
+
+<h2 id="5-lagrange-duality">5. Lagrange Duality</h2>
+<p>The method of <strong>Lagrange multipliers</strong> can be used to solve <em>constrained optimization problems</em> (like the problems shown in the last part).</p>
+
+<p>Consider a problem of the following form:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\min_w &\quad f(w) \\
+\mbox{s.t.} &\quad h_i(w)=0, \quad i=1, \ldots, l.
+\end{align} %]]></script>
+
+<p>To solve this constraint optimization problems, we define the <strong>Lagrangian</strong>:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(w,\beta)=f(w)+\sum_{i=1}^l \beta_i h_i(w)</script>
+
+<p>Here, the $\beta_i$’s are called the <strong>Lagrange multipliers</strong>. Then we let $\mathcal{L}$’s partial derivatives to be zero:</p>
+
+<script type="math/tex; mode=display">\frac{\partial\mathcal{L}}{\partial w_i}=0;\quad \frac{\partial\mathcal{L}}{\partial \beta_i}=0,</script>
+
+<p>and solve for $w$ and $beta$, and we’d be done.</p>
+
+<p>In this section, we will generalize this to constrained optimization problems in which we may have inequality as well as equality constraints.</p>
+
+<p>Consider the following, the <strong>primal</strong> optimization problem:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\min_w &\quad f(w) \\
+\mbox{s.t.} &\quad g_i(w) \le 0, \quad i=1,\ldots,k \\
+&\quad h_i(w)=0,\quad i=1,\ldots,l.
+\end{align} %]]></script>
+
+<p>To solve it, we start by defining the <strong>generalized Lagrangian</strong>:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(w,\alpha,\beta) = f(w) + \sum_{i=1}^k \alpha_i g_i(w) + \sum_{i=1}^l \beta_i h_i(w).</script>
+
+<p>Here, the $\alpha$’s and $\beta$’s arethe Lagrange multipliers. Consider the quantity:</p>
+
+<script type="math/tex; mode=display">\theta_{\mathcal{P}}(w) = \max_{\alpha,\beta:\alpha_i \ge 0} \mathcal{L}(w,\alpha,\beta).</script>
+
+<p>Here, the “$\mathcal{P}$” subscript stands for “primal”. Let some $w$ be given, if $w$ voilates any of the primal constraints (i.e., if either $g_i(w) \ge 0$ or $h_i(w) \ne 0$ for some $i$), then you should be able to verify that:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\theta_{\mathcal{P}}(w) &= \max_{\alpha,\beta:\alpha_i \ge 0} f(w) + \sum_{i=1}^k \alpha_i g_i(w) + \sum_{i=1}^l \beta_i h_i(w) \tag{1}\label{eq1} \\
+&= \infty \tag{2}\label{eq2}
+\end{align} %]]></script>
+
+<p>Conversely if the constraints are indeed satisfied for a particular value of $w$, then $\theta_\mathcal{P}(w)=f(w)$. Hence,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\theta_{\mathcal{P}}(w) = \left\{ \begin{array}{ll}
+f(w)  & \mbox{if} \ w\  \mbox{satisfies primal constraints} \\
+\infty & \mbox{otherwise.}
+\end{array}\right. %]]></script>
+
+<h2 id="reference">Reference</h2>
+<ol>
+  <li><a href="/public/cs229/cs229-notes3.pdf">» Stanford Lecture Note Part V</a></li>
+</ol>
+
+<p><br /><br /><strong><em>KF</em></strong></p>
+
+  </div>
+</div>
+
+
+<div>
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2019/03/05/cs229-lecture-6-7-svm";
+    this.page.identifier = "/2019/03/05/cs229-lecture-6-7-svm";
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//zkf85githubio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+</div>
+
+<!-- KF 02/13/2019  -->
+<!-- Add back to top button -->
+<button onclick="topFunction()" id="myBtn" title="Back to top"><i class="material-icons">vertical_align_top</i></button>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+    </main>
+    <footer class="page-footer ohio-state-scarlet">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">Theme based on <a href="http://materializecss.com">Materialize.css</a> for jekyll sites.
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          &#xA9; 2020 Everest. All rights reserved. Powered by <a href="https://github.com/zkf85">Kefeng</a>.
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    <script src="/assets/js/post.js"></script>
+    
+    
+    
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
+
