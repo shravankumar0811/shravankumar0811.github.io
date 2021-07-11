@@ -2,10 +2,9 @@
 body
 {
     
-    background-image: url("../images/background.jpeg");
+    background-image: url("../images/b.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-filter: blur(1px); 
+    background-position: center center; 
 
 }
