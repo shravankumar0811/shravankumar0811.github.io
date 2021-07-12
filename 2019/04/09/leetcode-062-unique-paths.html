@@ -166,23 +166,23 @@ Remember that after enabling this, you have to enter the real dollar sings with 
   <div class="col s12">
     <!--more-->
 <ul id="markdown-toc">
-  <li><a href="#problem-medium" id="markdown-toc-problem-medium">Problem (Medium)</a></li>
-  <li><a href="#approach-1-dynamic-programming-" id="markdown-toc-approach-1-dynamic-programming-">Approach 1: Dynamic Programming *</a>    <ul>
-      <li><a href="#idea" id="markdown-toc-idea">Idea</a></li>
-      <li><a href="#solution" id="markdown-toc-solution">Solution</a></li>
-      <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+  <li><a href="#problem-medium" id="markdown-toc-problem-medium" style="color:rgb(84, 44, 218)">Problem (Medium)</a></li>
+  <li><a href="#approach-1-dynamic-programming-" id="markdown-toc-approach-1-dynamic-programming-" style="color:rgb(84, 44, 218)">Approach 1: Dynamic Programming *</a>    <ul>
+      <li><a href="#idea" id="markdown-toc-idea" style="color:rgb(84, 44, 218)">Idea</a></li>
+      <li><a href="#solution" id="markdown-toc-solution" style="color:rgb(84, 44, 218)">Solution</a></li>
+      <li><a href="#complexity" id="markdown-toc-complexity" style="color:rgb(84, 44, 218)">Complexity</a></li>
     </ul>
   </li>
-  <li><a href="#approach-2-dynamic-programming-improved-" id="markdown-toc-approach-2-dynamic-programming-improved-">Approach 2: Dynamic Programming Improved *</a>    <ul>
-      <li><a href="#idea-1" id="markdown-toc-idea-1">Idea</a></li>
-      <li><a href="#solution-1" id="markdown-toc-solution-1">Solution</a></li>
-      <li><a href="#complexity-1" id="markdown-toc-complexity-1">Complexity</a></li>
+  <li><a href="#approach-2-dynamic-programming-improved-" id="markdown-toc-approach-2-dynamic-programming-improved-" style="color:rgb(84, 44, 218)">Approach 2: Dynamic Programming Improved *</a>    <ul>
+      <li><a href="#idea-1" id="markdown-toc-idea-1" style="color:rgb(84, 44, 218)">Idea</a></li>
+      <li><a href="#solution-1" id="markdown-toc-solution-1" style="color:rgb(84, 44, 218)">Solution</a></li>
+      <li><a href="#complexity-1" id="markdown-toc-complexity-1" style="color:rgb(84, 44, 218)">Complexity</a></li>
     </ul>
   </li>
 </ul>
 
 <h2 id="problem-medium">Problem (Medium)</h2>
-<p><a href="https://leetcode.com/problems/unique-paths">062. Unique Paths</a></p>
+<p><a href="https://leetcode.com/problems/unique-paths" style="color:rgb(84, 44, 218)">062. Unique Paths</a></p>
 
 <p>A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below).</p>
 
@@ -228,7 +228,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <h2 id="approach-1-dynamic-programming-">Approach 1: Dynamic Programming *</h2>
 
 <h3 id="idea">Idea</h3>
-<p><a href="https://leetcode.com/problems/unique-paths/discuss/22954/C%2B%2B-DP">C++ DP - LeetCode</a></p>
+<p><a href="https://leetcode.com/problems/unique-paths/discuss/22954/C%2B%2B-DP"  style="color:rgb(84, 44, 218)">C++ DP - LeetCode</a></p>
 
 <p>Since the robot can only move right and down, when it arrives at a point, it either arrives from left or above. If we use dp[i][j] for the number of unique paths to arrive at the point (i, j), then the state equation is dp[i][j] = dp[i][j - 1] + dp[i - 1][j]. Moreover, we have the base cases dp[0][j] = dp[i][0] = 1 for all valid i and j.</p>
 
@@ -261,7 +261,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <h2 id="approach-2-dynamic-programming-improved-">Approach 2: Dynamic Programming Improved *</h2>
 
 <h3 id="idea-1">Idea</h3>
-<p><a href="https://leetcode.com/problems/unique-paths/discuss/22954/C%2B%2B-DP">C++ DP - LeetCode</a></p>
+<p><a href="https://leetcode.com/problems/unique-paths/discuss/22954/C%2B%2B-DP" style="color:rgb(84, 44, 218)">C++ DP - LeetCode</a></p>
 
 <p>The above solution runs in O(m * n) time and costs O(m * n) space. However, you may have noticed that each time when we update dp[i][j], we only need dp[i - 1][j] (at the previous row) and dp[i][j - 1] (at the current row). So we can reduce the memory usage to just two rows (O(n)).</p>
 
@@ -294,7 +294,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
   </div>
 </div>
 
-
+<!--
 <div>
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -312,10 +312,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-
-
-
-</div>
+</div>-->
 
 <!-- KF 02/13/2019  -->
 <!-- Add back to top button -->
