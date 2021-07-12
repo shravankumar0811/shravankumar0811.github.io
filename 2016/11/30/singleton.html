@@ -174,11 +174,11 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <p>A singleton object provides a global point of access to the resources of its class. Singletons are used in situations where this single point of control is desirable, such as with classes that offer some general service or resource. You obtain the global instance from a singleton class through a factory method.</p>
 
 <h2 id="why-and-when-we-use-it">Why and When We Use It?</h2>
-<p>You obtain the global instance from a singleton class through a factory method. The class lazily creates its sole instance the first time it is requested and thereafter ensures that no other instance can be created.<sup id="fnref:apple"><a href="#fn:apple" class="footnote">1</a></sup> It’s an extremely powerful way to share data between different parts of code without having to pass the data around manually.<sup id="fnref:matt"><a href="#fn:matt" class="footnote">2</a></sup></p>
+<p>You obtain the global instance from a singleton class through a factory method. The class lazily creates its sole instance the first time it is requested and thereafter ensures that no other instance can be created.<sup id="fnref:apple"><a href="#fn:apple" class="footnote" style="color:rgb(84, 44, 218)">1</a></sup> It’s an extremely powerful way to share data between different parts of code without having to pass the data around manually.<sup id="fnref:matt"><a href="#fn:matt" class="footnote" style="color:rgb(84, 44, 218)">2</a></sup></p>
 
-<p>Singleton classes are an important concept to understand because they exhibit an extremely useful design pattern. This idea is used throughout the iPhone SDK, for example, UIApplication has a method called sharedApplication which when called from anywhere will return the UIApplication instance which relates to the currently running application.<sup id="fnref:matt:1"><a href="#fn:matt" class="footnote">2</a></sup></p>
+<p>Singleton classes are an important concept to understand because they exhibit an extremely useful design pattern. This idea is used throughout the iPhone SDK, for example, UIApplication has a method called sharedApplication which when called from anywhere will return the UIApplication instance which relates to the currently running application.<sup id="fnref:matt:1"><a href="#fn:matt" class="footnote" style="color:rgb(84, 44, 218)">2</a></sup></p>
 
-<h2 id="how-to-implement">How to Implement?<sup id="fnref:matt:2"><a href="#fn:matt" class="footnote">2</a></sup></h2>
+<h2 id="how-to-implement">How to Implement?<sup id="fnref:matt:2"><a href="#fn:matt" class="footnote" style="color:rgb(84, 44, 218)">2</a></sup></h2>
 <p>You can implement a singleton class in Objective-C using the following code:</p>
 
 <p>in <code class="language-plaintext highlighter-rouge">MyManager.h</code>:</p>
@@ -229,7 +229,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <span class="k">@end</span>
 </code></pre></div></div>
 
-<p>What this does is it defines a static variable (but only global to this <a href="http://en.wikipedia.org/wiki/Translation_unit_(programming)">translation unit</a>) called <code class="language-plaintext highlighter-rouge">sharedMyManager</code> which is then initialized once and only once in <code class="language-plaintext highlighter-rouge">sharedManager</code>. The way we ensure that it’s only created once is by using the <code class="language-plaintext highlighter-rouge">dispatch_once</code> method from <a href="http://developer.apple.com/library/ios/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html">Grand Central Dispatch (GCD)</a>. This is thread safe and handled entirely by the OS for you so that you don’t have to worry about it at all.</p>
+<p>What this does is it defines a static variable (but only global to this <a href="http://en.wikipedia.org/wiki/Translation_unit_(programming)" style="color:rgb(84, 44, 218)">translation unit</a>) called <code class="language-plaintext highlighter-rouge">sharedMyManager</code> which is then initialized once and only once in <code class="language-plaintext highlighter-rouge">sharedManager</code>. The way we ensure that it’s only created once is by using the <code class="language-plaintext highlighter-rouge">dispatch_once</code> method from <a href="http://developer.apple.com/library/ios/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html" style="color:rgb(84, 44, 218)">Grand Central Dispatch (GCD)</a>. This is thread safe and handled entirely by the OS for you so that you don’t have to worry about it at all.</p>
 
 <p>However, if you would rather not use GCD then you should use the following code for sharedManager:</p>
 
@@ -259,10 +259,10 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <div class="footnotes">
   <ol>
     <li id="fn:apple">
-      <p><a href="https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/Singleton.html">Singleton - Apple Developer</a> <a href="#fnref:apple" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/Singleton.html" style="color:rgb(84, 44, 218)">Singleton - Apple Developer</a> <a href="#fnref:apple" class="reversefootnote" style="color:rgb(84, 44, 218)">&#8617;</a></p>
     </li>
     <li id="fn:matt">
-      <p><a href="http://www.galloway.me.uk/tutorials/singleton-classes/">Singletons in Objective-C - Matt Galloway</a> <a href="#fnref:matt" class="reversefootnote">&#8617;</a> <a href="#fnref:matt:1" class="reversefootnote">&#8617;<sup>2</sup></a> <a href="#fnref:matt:2" class="reversefootnote">&#8617;<sup>3</sup></a></p>
+      <p><a href="http://www.galloway.me.uk/tutorials/singleton-classes/" style="color:rgb(84, 44, 218)">Singletons in Objective-C - Matt Galloway</a> <a href="#fnref:matt" class="reversefootnote" style="color:rgb(84, 44, 218)">&#8617;</a> <a href="#fnref:matt:1" class="reversefootnote" style="color:rgb(84, 44, 218)">&#8617;<sup>2</sup></a> <a href="#fnref:matt:2" class="reversefootnote" style="color:rgb(84, 44, 218)">&#8617;<sup>3</sup></a></p>
     </li>
   </ol>
 </div>
@@ -270,7 +270,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
   </div>
 </div>
 
-
+<!--
 <div>
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -288,10 +288,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-
-
-
-</div>
+</div>-->
 
 <!-- KF 02/13/2019  -->
 <!-- Add back to top button -->

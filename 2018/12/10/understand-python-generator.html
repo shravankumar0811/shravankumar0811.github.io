@@ -169,13 +169,13 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <div class="row">
   <div class="col s12">
     <blockquote>
-  <p>This post note a full understanding of a <strong><a href="http://www.python.org/dev/peps/pep-0255/">generator</a></strong> in Python.</p>
+  <p>This post note a full understanding of a <strong><a href="http://www.python.org/dev/peps/pep-0255/" style="color:rgb(84, 44, 218)">generator</a></strong> in Python.</p>
 </blockquote>
 
 <!--more-->
 
 <h2 id="1-what-is-a-generator">1. What is a Generator?</h2>
-<p>A <strong><a href="http://www.python.org/dev/peps/pep-0255/">generator</a></strong> is a simply a function which returns an object on which you caqn call <code class="language-plaintext highlighter-rouge">next</code>, such that for every call it returns some value, until it raises a ` StopIteration` exception, signaling that all values have been generated. Such an object is called an <em>iterator</em>.</p>
+<p>A <strong><a href="http://www.python.org/dev/peps/pep-0255/" style="color:rgb(84, 44, 218)">generator</a></strong> is a simply a function which returns an object on which you caqn call <code class="language-plaintext highlighter-rouge">next</code>, such that for every call it returns some value, until it raises a ` StopIteration` exception, signaling that all values have been generated. Such an object is called an <em>iterator</em>.</p>
 
 <p>Normal functions return a single value using <code class="language-plaintext highlighter-rouge">return</code>. In Python, however, there’s an alternative called <code class="language-plaintext highlighter-rouge">yield</code>. Using <code class="language-plaintext highlighter-rouge">yield</code> anywhere in a function makes it a generator:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">myGen</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -192,7 +192,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
   <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="nb">StopIteration</span>
 </code></pre></div></div>
-<p>As you can see, <code class="language-plaintext highlighter-rouge">myGen(n)</code> is a function which yields <code class="language-plaintext highlighter-rouge">n</code> and <code class="language-plaintext highlighter-rouge">n+1</code>. Every call to <a href="http://docs.python.org/3/library/functions.html#next"><code class="language-plaintext highlighter-rouge">next</code></a> yields a single value, until all values have been yielded. <code class="language-plaintext highlighter-rouge">for</code> loops call <code class="language-plaintext highlighter-rouge">next</code> in the background, this:</p>
+<p>As you can see, <code class="language-plaintext highlighter-rouge">myGen(n)</code> is a function which yields <code class="language-plaintext highlighter-rouge">n</code> and <code class="language-plaintext highlighter-rouge">n+1</code>. Every call to <a href="http://docs.python.org/3/library/functions.html#next" style="color:rgb(84, 44, 218)"><code class="language-plaintext highlighter-rouge">next</code></a> yields a single value, until all values have been yielded. <code class="language-plaintext highlighter-rouge">for</code> loops call <code class="language-plaintext highlighter-rouge">next</code> in the background, this:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">myGen</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="o">...</span>
@@ -200,7 +200,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <span class="mi">7</span>
 </code></pre></div></div>
 
-<p>Likewise there are <a href="http://www.python.org/dev/peps/pep-0289/">generator expressions</a>, which provide a means to succinctly describe certain common types of generators:</p>
+<p>Likewise there are <a href="http://www.python.org/dev/peps/pep-0289/" style="color:rgb(84, 44, 218)">generator expressions</a>, which provide a means to succinctly describe certain common types of generators:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="mi">3</span>
@@ -212,7 +212,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <span class="nb">StopIteration</span>
 </code></pre></div></div>
 
-<p>Note that generator expressions are much like list <a href="http://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">comprehensions</a>:</p>
+<p>Note that generator expressions are much like list <a href="http://docs.python.org/3/tutorial/datastructures.html#list-comprehensions" style="color:rgb(84, 44, 218)">comprehensions</a>:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">lc</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">lc</span>
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -233,7 +233,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
     <p>Instead of creating a function which returns a list of values, one can write a generator which generates the values on the fly. This means that no list needs to be constructed, meaning that the resulting code is more <strong>memory efficient</strong>. In this way one can even describe data streams which would simply be too large to fit in memory.</p>
   </li>
   <li>
-    <p>Generators allow for a natural way to describe infinite streams. Consider for example the <a href="http://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci numbers</a>:</p>
+    <p>Generators allow for a natural way to describe infinite streams. Consider for example the <a href="http://en.wikipedia.org/wiki/Fibonacci_number" style="color:rgb(84, 44, 218)">Fibonacci numbers</a>:</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fib</span><span class="p">():</span>
   <span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
   <span class="o">...</span>     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -300,14 +300,14 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 
 <h2 id="references">References</h2>
 
-<p><a href="https://stackoverflow.com/questions/1756096/understanding-generators-in-python">» Understanding generators in Python on Stack Overflow</a></p>
+<p><a href="https://stackoverflow.com/questions/1756096/understanding-generators-in-python" style="color:rgb(84, 44, 218)">» Understanding generators in Python on Stack Overflow</a></p>
 
 <p><br /><br /><strong><em>shravan</em></strong></p>
 
   </div>
 </div>
 
-
+<!--
 <div>
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -325,10 +325,7 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-
-
-
-</div>
+</div>-->
 
 <!-- KF 02/13/2019  -->
 <!-- Add back to top button -->
