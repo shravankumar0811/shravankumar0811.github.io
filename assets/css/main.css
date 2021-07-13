@@ -3,9 +3,14 @@ a {
 }
 
 d {
-    color: #e2e8ee;
+    color: #ffffff;
     font-size: 25px;
     
+}
+
+sh {
+    color: #aebea1;
+    background-color: rgba(0,0,0,0.7) 
 }
 
 a:hover {

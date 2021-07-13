@@ -75,3 +75,13 @@ img.bg {
     display: inline-block;
     margin-left: 40px;
 }
+
+body
+{
+    
+    background-image: url("../images/index.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+
+}

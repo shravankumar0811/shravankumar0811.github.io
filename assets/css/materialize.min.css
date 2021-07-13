@@ -3730,7 +3730,8 @@ small{
 .card{
     position:relative;
     margin:.5rem 0 1rem 0;
-    background-color:#fff;
+    /*background-color:#fff;*/
+    background-color:rgb(45, 49, 41,0.52);
     transition:box-shadow .25s;
     border-radius:16px;
 }
@@ -3845,6 +3846,11 @@ small{
 	*/
     padding:24px 24px 12px 24px;
     /*border-radius:24px;*/
+}
+
+.sh{
+    color:#40b4a7;
+    
 }
 .card .card-content p{
     margin:0;
@@ -5651,7 +5657,7 @@ input[type=range]:focus::-ms-fill-upper{
     cursor:initial;
     font-size:30px;
     font-weight:lighter;
-    color:rgba(255, 255, 255, 0.50);
+    color:rgba(0, 0, 0, 0.5);
     vertical-align: middle;
 }
 
