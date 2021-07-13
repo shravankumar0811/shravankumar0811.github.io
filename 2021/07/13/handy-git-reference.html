@@ -156,9 +156,9 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 </div>
 <div class="row">
   <div class="col s12">
-    <blockquote>
+    <!--<blockquote>
   <p>In this article i am showing how to clear Git history by removing all commits. You may need this if you want to delete sensitive data from the history of Git commits. After such cleanup you will have the latest version of your Git repository, but with the one commit only. Be aware that after resetting all the history of changes in your Git repository will be deleted as well.</p>
-</blockquote>
+</blockquote>-->
 
 <!--more-->
 <ul id="markdown-toc">
@@ -170,104 +170,104 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 </ul>
 
 <h3 id="1-Prerequisites">1. Prerequisites:</h3>
-<p>Install git:</p>
+<p><ul><li>Install git:</li></ul></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt-get install git
 </code></pre></div></div>
-<p>Basic configuration. This step can be skipped. The third command is to tell git to use your favorite editor for editing commit messages:</p>
+<p><ul><li>Basic configuration. This step can be skipped. The third command is to tell git to use your favorite editor for editing commit messages:</li></ul></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git config --global user.name "Shravan"<br>$git config --global user.email "shravan@donotemailme.in"<br>$git config --global core.editor emacs
 </code></pre></div></div>
-<p>cd into the directory you want to establish as a git repository</p>
+<p><ul><li>cd into the directory you want to establish as a git repository</li></ul></p>
 
 <h3 id="2-Creating-a-git-repository">2. Creating a git repository:</h3>
-<p>Create a new git repo for this directory:</p>
+<p><ul><li>Create a new git repo for this directory:</li></ul></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git init
 </code></pre></div></div>
-<p>Mark all files in the directory for committing (note the trailing .):</p>
+<p><ul><li>Mark all files in the directory for committing (note the trailing .):</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git add .
 </code></pre></div></div>
-<p>Commit all these files to the repo. This step completes the repo setup. git will prompt you to enter a commit message. Just say something like "creating new repo", save the file and exit.</p>
+<p><ul><li>Commit all these files to the repo. This step completes the repo setup. git will prompt you to enter a commit message. Just say something like "creating new repo", save the file and exit.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git commit
 </code></pre></div></div>
-<p>Your git repo is now ready. All your files are under version control.:</p>
+<p><ul><li>Your git repo is now ready. All your files are under version control.:</ul></li></p>
 
 <h3 id="3-Cloning-an-existing-repository">3. Cloning an existing repository:</h3>
-<p>If you want to work on an existing git repository (say from GitHub), you will need to clone it to have a copy locally.:</p>
+<p><ul><li>If you want to work on an existing git repository (say from GitHub), you will need to clone it to have a copy locally.:</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git clone https://github.com/shravan/misc.git misc "will clone this repository into a directory called misc"
 </code></pre></div></div>
-<p>You can make clone of repositories already on your disk or remote repositories over SSH. Just replace the URL above with a path name or an ssh string respectively.</p>
+<p><ul><li>You can make clone of repositories already on your disk or remote repositories over SSH. Just replace the URL above with a path name or an ssh string respectively.</ul></li></p>
 
 <h3 id="4-Basic-version-control-using-git">4. Basic version control using git:</h3>
-<p>To check currently modified files in your repo, run this command in any (sub)directory of your repo.</p>
+<p><ul><li>To check currently modified files in your repo, run this command in any (sub)directory of your repo.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git status
 </code></pre></div></div>
-<p>Mark modified files for commit: This command will add files to the staging area, which means its marked for commit, and will be committed the next time you run git commit. If you make any changes to files after adding them, those changes will not make it to the commit, you will need to again add the file.</p>
+<p><ul><li>Mark modified files for commit: This command will add files to the staging area, which means its marked for commit, and will be committed the next time you run git commit. If you make any changes to files after adding them, those changes will not make it to the commit, you will need to again add the file.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git add filename(s)
 </code></pre></div></div>
-<p>Commit files: This will commit marked files to the repo. After this, these files will no longer be shown under "git status" command. You will need to enter a commit message. You can append -m "commit message" to the command instead of having to open an editor and enter the message there.</p>
+<p><ul><li>Commit files: This will commit marked files to the repo. After this, these files will no longer be shown under "git status" command. You will need to enter a commit message. You can append -m "commit message" to the command instead of having to open an editor and enter the message there.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git commit
 </code></pre></div></div>
-<p>Undo changes to uncommitted files. This will reset the files to the last committed version. This will work if you have not already added the files to the staging area.</p>
+<p><ul><li>Undo changes to uncommitted files. This will reset the files to the last committed version. This will work if you have not already added the files to the staging area.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git checkout filename(s)
 </code></pre></div></div>
-<p>Unstage from staging area.</p>
+<p><ul><li>Unstage from staging area.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset filename(s)
 </code></pre></div></div>
-<p>Log: see commit logs for your repo</p>
+<p><ul><li>Log: see commit logs for your repo</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git log
 </code></pre></div></div>
-<p>Revert a commit: This will try to undo all changes done by a commit. The revert itself will be a new commit.</p>
+<p><ul><li>Revert a commit: This will try to undo all changes done by a commit. The revert itself will be a new commit.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git revert SHA1
 </code></pre></div></div>
-<p>Diff: See the local changes to file(s). You can also provide two commit hashes (show in git log) to see the diff b/w them. Branchnames can be provided as an argument to see diff of current working directory comparing to a branch.</p>
+<p><ul><li>Diff: See the local changes to file(s). You can also provide two commit hashes (show in git log) to see the diff b/w them. Branchnames can be provided as an argument to see diff of current working directory comparing to a branch.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git diff filename(s)<br>$git diff SHA1 SHA2<br>$git diff master (compare working directory with branch master)
 </code></pre></div></div>
-<p>Show the details of a particular commit, including the code diff.</p>
+<p><ul><li>Show the details of a particular commit, including the code diff.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git show SHA1
 </code></pre></div></div>
-<p>Checkout old versions: This command will checkout an older version into a new branch. Here SHA1 is the hash of the older revision you want to check out (this can be obtained from git log).</p>
+<p><ul><li>Checkout old versions: This command will checkout an older version into a new branch. Here SHA1 is the hash of the older revision you want to check out (this can be obtained from git log).</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git checkout -b NewBranchName SHA1
 </code></pre></div></div>
-<p>Switch branches. You need to have all files committed before you can switch branches.</p>
+<p><ul><li>Switch branches. You need to have all files committed before you can switch branches.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git checkout BranchName
 </code></pre></div></div>
-<p>See all branches present:</p>
+<p><ul><li>See all branches present:</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git branch
 </code></pre></div></div>
-<p>Delete a branch:</p>
+<p><ul><li>Delete a branch:</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git branch -D BranchName
 </code></pre></div></div>
-<p>Merge branches: This command will merge BranchName to the currently active (selected) branch.</p>
+<p><ul><li>Merge branches: This command will merge BranchName to the currently active (selected) branch.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git merge BranchName
 </code></pre></div></div>
-<p>Rebase against master: This command will update the current branch with changes from master. i.e. After you branched out, master might have moved forward. Rebasing your branch with master will get your branch up to date with master. Note that rebasing works by replaying all commits since the point of divergence. See next.</p>
+<p><ul><li>Rebase against master: This command will update the current branch with changes from master. i.e. After you branched out, master might have moved forward. Rebasing your branch with master will get your branch up to date with master. Note that rebasing works by replaying all commits since the point of divergence. See next.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git rebase master
 </code></pre></div></div>
-<p>Typical workflow is to branch out (say branch1) from master, do your work in branch1 and commit it. Then switch to master and merge branch1 to it (typically by having it reviewed / creating a pull-request). Changes from different branches come into master this way (via merges). Your branch can keep updated with master by merging master to your branch, OR alternatively, by rebaseing against it. Note that rebasing will cause all commits since divergence from master to be re-committed. This will create a mess if your local branch is tracking a remote branch and you push to the remote branch. Use git merge to merge from master, instead. Some teams do not however recommend merging master to your branch (but ask you to rebase instead) because merging creates what is called a merge commit.</p>
-<p>Cherry pick (a specific commit) from another branch, instead of merging all of it.</p>
+<p><ul><li>Typical workflow is to branch out (say branch1) from master, do your work in branch1 and commit it. Then switch to master and merge branch1 to it (typically by having it reviewed / creating a pull-request). Changes from different branches come into master this way (via merges). Your branch can keep updated with master by merging master to your branch, OR alternatively, by rebaseing against it. Note that rebasing will cause all commits since divergence from master to be re-committed. This will create a mess if your local branch is tracking a remote branch and you push to the remote branch. Use git merge to merge from master, instead. Some teams do not however recommend merging master to your branch (but ask you to rebase instead) because merging creates what is called a merge commit.</ul></li></p>
+<p><ul><li>Cherry pick (a specific commit) from another branch, instead of merging all of it.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git cherry-pick SHA1
 </code></pre></div></div>
-<p>Stashing and getting back local working changes (i.e, those changes in the working area - not yet committed). The first one stashes away the code and restore the codebase to HEAD (last committed change). The second one will restore back the changes.</p>
+<p><ul><li>Stashing and getting back local working changes (i.e, those changes in the working area - not yet committed). The first one stashes away the code and restore the codebase to HEAD (last committed change). The second one will restore back the changes.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git stash<br>$git stash pop<br>$git stash list
 </code></pre></div></div>
-<p>Adding a remote to an existing git repository: (If adding a second remote, give it a name other than origin). origin is conventionally where you cloned your repository from.</p>
+<p><ul><li>Adding a remote to an existing git repository: (If adding a second remote, give it a name other than origin). origin is conventionally where you cloned your repository from.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git remote add origin path://to/git/repo
 </code></pre></div></div>
-<p>Checking out and updating branches (not necessarily master) from remote:</p>
+<p><ul><li>Checking out and updating branches (not necessarily master) from remote:</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git remote update<br>$git checkout -b branchname origin/branchname
 </code></pre></div></div>
-<p>Push changes up-stream (you can omit the last two arguments if you are on "master"). The -u argument ensures that from next time, you can do an argument less pull or push on that branch to correspond with origin.</p>
+<p><ul><li>Push changes up-stream (you can omit the last two arguments if you are on "master"). The -u argument ensures that from next time, you can do an argument less pull or push on that branch to correspond with origin.</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git push -u origin branchname
 </code></pre></div></div>
-<p>Pull changes from a repository other than "origin" (repository needs to be added using "git remote add" command).</p>
+<p><ul><li>Pull changes from a repository other than "origin" (repository needs to be added using "git remote add" command).</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git pull repo branchname
 </code></pre></div></div>
-<p>Modify the last commit. Any changes you want to make, like including adding new files from the staged area to the commit or editing the commit message, can be done with this command:</p>
+<p><ul><li>Modify the last commit. Any changes you want to make, like including adding new files from the staged area to the commit or editing the commit message, can be done with this command:</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git commit --amend
 </code></pre></div></div>
-<p>If the repository you are cloning has submodules, add --recurse-submodules to the clone command. If you have already cloned and missed adding this flag, you can fetch the submodules as</p>
+<p><ul><li>If the repository you are cloning has submodules, add --recurse-submodules to the clone command. If you have already cloned and missed adding this flag, you can fetch the submodules as</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule update --init --recursive
 </code></pre></div></div>
-<p>Pretty print (branch graph etc) git log. Use command "git lg" after running this command</p>
+<p><ul><li>Pretty print (branch graph etc) git log. Use command "git lg" after running this command</ul></li></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 </code></pre></div></div>
 
@@ -277,12 +277,12 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 
 
 
-
-<h2 id="reference">Reference</h2>
+<!--
+<h2 id="reference">Reference</h2>-->
 
 <ul>
-  <li><a href="https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/" style="color:rgb(84, 44, 218)">Reference Link</a></li>
-  <li><a href="https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github" style="color:rgb(84, 44, 218)">Reference from StackOverflow</a></li>
+  <li><a href="https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/" style="color:rgb(84, 44, 218)">Shellhacks</a></li>
+  <li><a href="https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github" style="color:rgb(84, 44, 218)">StackOverflow</a></li>
 </ul>
 
 <p><br /><br /><strong><em>shravan</em></strong></p>
