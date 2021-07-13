@@ -58,6 +58,17 @@
           </div>
         </div>
       </nav>
+      <html>
+      <head>
+        <div class="userView">
+          <div class="background"></div>
+          <div class="content">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <a class="welcome"><b>Welcome to my page!</b></a>
+            </div>
+        </div>
+        </head>
+      </html>
       <div class="container">
         <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
           <i class="material-icons">menu</i>
@@ -125,343 +136,51 @@ Remember that after enabling this, you have to enter the real dollar sings with 
 <div class="container">
   <div class="row">
   
-  <div class="col s12">
+  <div class="col s3">
     <div class="card hoverable">
       <div class="card-content">
         <!--<span id="post-title" class="card-title">Vundle Usage Memo</span>
         -->
-        <a id="post-title" class="card-title" href="/2020/09/09/vundle-usage-memo">
-        Vundle Usage Memo
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Sept.
-            
-          09, 2020 - Wednesday
+        <a id="post-title" class="card-title" href="/">
+          <i class="material-icons">home</i>Home</a>
 
-        </p>
-        <p id="post-content"><blockquote>
-  <p>Some Vundle basic usage tips.</p>
-</blockquote>
+      </div>
+      
+    </div>
+  </div>
 
-</p>
+  <div class="col s4">
+    <div class="card hoverable">
+      <div class="card-content">
+        <!--<span id="post-title" class="card-title">Vundle Usage Memo</span>
+        -->
+        <a id="post-title" class="card-title" href="/categories"><i class="material-icons">sort</i>Categories</a>
       </div>
-      <div class="card-action">
-        <a href="/2020/09/09/vundle-usage-memo">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
+      
     </div>
   </div>
   
-  <div class="col s12">
+  <div class="col s3">
     <div class="card hoverable">
       <div class="card-content">
-        <!--<span id="post-title" class="card-title">Run Docker as Non-root User in Linux</span>
+        <!--<span id="post-title" class="card-title">Vundle Usage Memo</span>
         -->
-        <a id="post-title" class="card-title" href="/2020/09/04/run-docker-as-non-root-user-in-linux">
-        Run Docker as Non-root User in Linux
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Sept.
-            
-          04, 2020 - Friday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <p>The solution is simple:</p>
-</blockquote>
-
-<p>To fix the Docker permission denied error and use Docker as non-root user, create a group called “docker” with the following command:</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>groupadd docker
-</code></pre></div></div>
-
-<p>Next, add your user to the docker group:</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
-</code></pre></div></div>
-<p>After adding the user to the docker group, <em>log out</em> and <em>log back</em> in to take effect the changes.</p>
-
-</p>
+        <a id="post-title" class="card-title" href="/tags"><i class="material-icons">label</i>Tags</a>
       </div>
-      <div class="card-action">
-        <a href="/2020/09/04/run-docker-as-non-root-user-in-linux">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
+      
     </div>
   </div>
+  <div class="col s3">
+    <div class="card hoverable">
+      <div class="card-content">
+        <a id="post-title" class="card-title" href="/contact"><i class="material-icons">email</i>Contact</a>
+      </div>
+      
+    </div>
+  </div>
+
   
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">Python Logging Export to File</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/09/01/python-logging-export-to-file">
-        Python Logging Export to File
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Sept.
-            
-          01, 2020 - Tuesday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <p>As for the need for logging from Python program, here is a memo for the use of the Python built-in module <code class="language-plaintext highlighter-rouge">logging</code></p>
-</blockquote>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/09/01/python-logging-export-to-file">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
   
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">Git Remove All Commit Clear Git History</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/08/20/git-remove-all-commit-clear-git-history">
-        Git Remove All Commit Clear Git History
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Aug.
-            
-          20, 2020 - Thursday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <p>In this article i am showing how to clear Git history by removing all commits. You may need this if you want to delete sensitive data from the history of Git commits. After such cleanup you will have the latest version of your Git repository, but with the one commit only. Be aware that after resetting all the history of changes in your Git repository will be deleted as well.</p>
-</blockquote>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/08/20/git-remove-all-commit-clear-git-history">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">PPT Resolution Problem with 3D Format</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/07/06/ppt-resolution-problem-with-3d-format">
-        PPT Resolution Problem with 3D Format
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          July
-            
-          06, 2020 - Monday
-
-        </p>
-        <p id="post-content"><p>PPT can normally export as PDF with very high resolution (the vectorized file). However, I encounter a weird problem today that cannot export a high resolution PDF. After “debugging” and “doing experiments”, I’ve finally found the problem. It’s because of the 3D format settings.</p>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/07/06/ppt-resolution-problem-with-3d-format">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">Setup Checklist on Windows PC</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/04/28/setup-checklist-on-windows-pc">
-        Setup Checklist on Windows PC
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          April
-            
-          28, 2020 - Tuesday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <p>Just got a new working laptop with Windows 10. Here make a checklist of essential tools and software to be installed and configured on it.</p>
-</blockquote>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/04/28/setup-checklist-on-windows-pc">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">How to Setup a GIT server</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/04/27/how-to-setup-a-git-server">
-        How to Setup a GIT server
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          April
-            
-          27, 2020 - Monday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <p>remote git repo is actually no difference from a local one. Here’s how to setup a LOCAL git server.</p>
-</blockquote>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/04/27/how-to-setup-a-git-server">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">How to Use Selenium to Auto Login</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/04/26/how-to-use-selenium-to-auto-login">
-        How to Use Selenium to Auto Login
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          April
-            
-          26, 2020 - Sunday
-
-        </p>
-        <p id="post-content"><blockquote>
-  <blockquote>
-    <p>使用Selenium自动化操作网页，以自动登陆（办公网）系统。</p>
-  </blockquote>
-</blockquote>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/04/26/how-to-use-selenium-to-auto-login">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">Frequently used linux commands</span>
-        -->
-        <a id="post-title" class="card-title" href="/2020/03/06/frequently-used-linux-commands">
-        Frequently used linux commands
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Mar.
-            
-          06, 2020 - Friday
-
-        </p>
-        <p id="post-content">
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/03/06/frequently-used-linux-commands">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <!--<span id="post-title" class="card-title">How To Open A Port In CentOS 7 With Fiewalld</span>
-        -->
-        <a id="post-title" class="card-title" href="/2019/12/02/how-to-open-a-port-in-centos-7-with-fiewalld">
-        How To Open A Port In CentOS 7 With Fiewalld
-        </a>
-        
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-           
-          Dec.
-            
-          02, 2019 - Monday
-
-        </p>
-        <p id="post-content"><h2 id="open-specific-port">Open Specific Port</h2>
-
-<p>Opening a port in firewalld is fairly straightforward, in the below example we allow traffic in from any source IP address to TCP port 100. First we modify the persistent configuration, then we reload firewall-cmd to load this change into the running configuration.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@centos7 ~]# firewall-cmd --permanent --add-port=100/tcp
-success
-[root@centos7 ~]# firewall-cmd --reload
-success
-</code></pre></div></div>
-
-<p>If the –permanent flag is not specified, this will only change the running configuration but will not be saved.</p>
-
-<p>We can check the ports that are opened in the current default zone with ‘–list-ports’.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@centos7 ~]# firewall-cmd --list-ports
-100/tcp
-As expected we see that TCP port 100 is open.
-
-Should we wish to remove a port, we can use ‘--remove-port=’ instead.
-
-We can also open a range of ports in the same way.
-
-[root@centos7 ~]# firewall-cmd --permanent --add-port=200-300/tcp
-success
-</code></pre></div></div>
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2019/12/02/how-to-open-a-port-in-centos-7-with-fiewalld">
-          Read More 
-        <i class="material-icons">keyboard_arrow_down</i></a>
-      </div>
-    </div>
-  </div>
   
   <div class="col s12 center-align">
     <ul class="pagination">
