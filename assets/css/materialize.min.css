@@ -5654,6 +5654,10 @@ input[type=range]:focus::-ms-fill-upper{
     color:rgba(255, 255, 255, 0.50);
     vertical-align: middle;
 }
+
+.about_message{
+    color:rgba(0, 0, 0, 0.651);
+}
 .side-nav .user-view,.side-nav .userView{
     position:relative;
 	/* Edited by KF 11/27/2018
@@ -5691,7 +5695,7 @@ input[type=range]:focus::-ms-fill-upper{
     margin-right:auto;
     margin-top: 10px;
     margin-bottom: 10px;
-	width:75%;
+	width:80%;
 
 }
 .side-nav .user-view .name,.side-nav .user-view .email,.side-nav .userView .name,.side-nav .userView .email{

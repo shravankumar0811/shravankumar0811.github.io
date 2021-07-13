@@ -51,3 +51,13 @@
     background: #be2b7c;
     color: rgb(243, 242, 242);
   }
+
+body
+{
+    
+    background-image: url("../images/about.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+
+}
